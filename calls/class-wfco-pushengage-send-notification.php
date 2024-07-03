@@ -65,11 +65,9 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 		$contact = new WooFunnels_Contact( '', '', '', $contact_id, '' );
 
 		//get subscriber IDs from FunnelKit Contact.
-		$subscriber_ids = $contact->get_meta( 'pushengage_subscriber_ids' );
+		$subscriber_ids = $contact->get_field_by_slug( 'pushengage-subscriber-ids' ) ? strtotime( $contact->get_field_by_slug( 'pushengage-subscriber-ids' ) ) : '';
 
 		if ( empty( $subscriber_ids ) || ! is_array( $subscriber_ids ) ) {
-			file_put_contents(ABSPATH.'test.txt','Response1213 : '.print_r($subscriber_ids,true).PHP_EOL,8);
-
 			return;
 		}
 
@@ -142,15 +140,12 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 
 		// Remove empty items from params array.
 		$params = array_filter( $params );
-		file_put_contents(ABSPATH.'test.txt','$params : '.print_r($params,true).PHP_EOL,8);
 
 		// Encode parameters for request.
 		$body = wp_json_encode( $params, JSON_UNESCAPED_UNICODE );
-		file_put_contents(ABSPATH.'test.txt','$body : '.print_r($body,true).PHP_EOL,8);
 
 		// Make request.
 		$res = $this->make_wp_requests( $this->api_end_point, $body, BWFCO_PushEngage::get_headers(), BWF_CO::$POST );
-		file_put_contents(ABSPATH.'test.txt','res : '.print_r($res,true).PHP_EOL,8);
 		return $res;
 	}
 

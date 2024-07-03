@@ -104,6 +104,13 @@ class WFCO_PushEngage_Common {
 
 		return $truncated_str;
 	}
+	public static function create_field_if_not_exists($field_name) {
+		$field = BWFCRM_Fields::get_fieldby_name( $field_name );
+		if ( ! empty( $field ) ) {
+			return;
+		}
+		BWFCRM_Fields::add_field($field_name, 'text', array(), '', 2, 2, 1, 0, 2);
+	}
 }
 
 WFCO_PushEngage_Common::get_instance();

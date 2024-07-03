@@ -48,7 +48,7 @@ class BWFCO_PushEngage extends BWF_CO {
 		$this->sync              = false;
 		$this->connector_url     = WFCO_PUSHENGAGE_PLUGIN_URL;
 		$this->dir               = __DIR__;
-		$this->nice_name         = __( 'PUSHENGAGE', 'autonami-automations-connectors' );
+		$this->nice_name         = __( 'PUSHENGAGE', 'wp-marketing-automations-connectors' );
 		$this->autonami_int_slug = 'BWFAN_PushEngage_Integration';
 
 		add_filter( 'wfco_connectors_loaded', array( $this, 'add_card' ) );
@@ -64,10 +64,10 @@ class BWFCO_PushEngage extends BWF_CO {
 		return array(
 			array(
 				'id'          => 'api_token',
-				'label'       => __( 'API Token', 'autonami-automations-connectors' ),
+				'label'       => __( 'API Token', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan_pushengage_api_token',
-				'placeholder' => __( 'API Token', 'autonami-automations-connectors' ),
+				'placeholder' => __( 'API Token', 'wp-marketing-automations-connectors' ),
 				'required'    => true,
 				'toggler'     => array(),
 			),
@@ -117,7 +117,7 @@ class BWFCO_PushEngage extends BWF_CO {
 		$resp_array = array(
 			'api_data' => $posted_data,
 			'status'   => 'failed',
-			'message'  => __( 'There was problem authenticating your account. Confirm entered details.', 'autonami-automations-connectors' ),
+			'message'  => __( 'There was problem authenticating your account. Confirm entered details.', 'wp-marketing-automations-connectors' ),
 		);
 
 		if ( is_null( $call_class ) ) {
@@ -149,7 +149,7 @@ class BWFCO_PushEngage extends BWF_CO {
 			return $resp_array;
 		} else {
 			$resp_array['status']  = 'failed';
-			$resp_array['message'] = isset( $sn_status['body']['message'] ) ? $sn_status['body']['message'] : __( 'Undefined Api Error', 'autonami-automations-connectors' );
+			$resp_array['message'] = isset( $sn_status['body']['message'] ) ? $sn_status['body']['message'] : __( 'Undefined Api Error', 'wp-marketing-automations-connectors' );
 
 			return $resp_array;
 		}
@@ -188,7 +188,7 @@ class BWFCO_PushEngage extends BWF_CO {
 	public static function set_headers( $api_token ) {
 		$headers = array(
 			'x-pe-api-key'        => $api_token,
-			'x-pe-client'         => __( 'WordPress', 'autonami-automations-connectors' ),
+			'x-pe-client'         => __( 'WordPress', 'wp-marketing-automations-connectors' ),
 			'x-pe-client-version' => get_bloginfo( 'version' ),
 			'x-pe-sdk-version'    => WFCO_PUSHENGAGE_VERSION,
 			'Content-Type'        => 'application/json',
@@ -217,7 +217,7 @@ class BWFCO_PushEngage extends BWF_CO {
 	public function add_card( $available_connectors ) {
 		$available_connectors['autonami']['connectors']['bwfco_pushengage'] = array(
 			'name'            => 'PushEngage',
-			'desc'            => __( 'Send Notifications using PushEngage.', 'autonami-automations-connectors' ),
+			'desc'            => __( 'Send Notifications using PushEngage.', 'wp-marketing-automations-connectors' ),
 			'connector_class' => 'BWFCO_PushEngage',
 			'image'           => $this->get_image(),
 			'source'          => '',

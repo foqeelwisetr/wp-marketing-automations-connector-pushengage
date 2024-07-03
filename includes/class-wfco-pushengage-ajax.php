@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AJAX Class.
  *
@@ -9,8 +10,8 @@ class WFCO_PushEngage_AJAX {
 	/**
 	 * Class Constructor.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function __construct() {
 		// Load AJAX hook.
@@ -21,18 +22,16 @@ class WFCO_PushEngage_AJAX {
 	/**
 	 * Update funnelKit contact.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function update_funnelkit_contact() {
 		check_ajax_referer( 'pushengage_sync_ajax', 'nonce' );
 
 		if ( ! class_exists( 'WooFunnels_Contact' ) ) {
-			wp_send_json_error(
-				array(
-					'message' => __( 'FunnelKit Automations not found', 'autonami-automations-connectors' ),
-				)
-			);
+			wp_send_json_error( array(
+					'message' => __( 'FunnelKit Automations not found', 'wp-marketing-automations-connectors' ),
+				) );
 		}
 
 		$contact_uid      = sanitize_text_field( filter_input( INPUT_POST, 'contactID' ) );
@@ -41,14 +40,12 @@ class WFCO_PushEngage_AJAX {
 		$contact = new WooFunnels_Contact( '', '', '', '', $contact_uid );
 
 		if ( empty( $contact->id ) ) {
-			wp_send_json_error(
-				array(
-					'message' => __( 'Invalid contact ID provided', 'autonami-automations-connectors' ),
-				)
-			);
+			wp_send_json_error( array(
+					'message' => __( 'Invalid contact ID provided', 'wp-marketing-automations-connectors' ),
+				) );
 		}
 
-		$subs_tokens = $contact->get_meta( 'pushengage_subscriber_ids' );
+		$subs_tokens = $contact->get_field_by_slug( 'pushengage-message-pe-token' ) ? strtotime( $contact->get_field_by_slug( 'pushengage-message-pe-token' ) ) : '';
 
 		if ( empty( $subs_tokens ) || ! is_array( $subs_tokens ) ) {
 			$subs_tokens = array();
@@ -58,19 +55,14 @@ class WFCO_PushEngage_AJAX {
 			$subs_tokens[] = $subscriber_token;
 		}
 
-		$contact->set_meta(
-			'pushengage_subscriber_ids',
-			$subs_tokens
-		);
+		$contact->set_meta( 'pushengage_subscriber_ids', $subs_tokens );
 
 		$contact->save_meta();
 
-		wp_send_json_success(
-			array(
-				'message'           => __( 'Subscriber ID synced', 'autonami-automations-connectors' ),
-				'subscriber_tokens' => $contact->get_meta( 'pushengage_subscriber_ids' ),
-			)
-		);
+		wp_send_json_success( array(
+				'message'           => __( 'Subscriber ID synced', 'wp-marketing-automations-connectors' ),
+				'subscriber_tokens' => $contact->get_field_by_slug( 'pushengage-message-pe-token' ),
+			) );
 	}
 }
 

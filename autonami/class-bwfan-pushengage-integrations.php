@@ -11,8 +11,8 @@ final class BWFAN_PushEngage_Integration extends BWFAN_Integration {
 
 	private function __construct() {
 		$this->action_dir = __DIR__;
-		$this->nice_name  = __( 'PushEngage', 'autonami-automations-connectors' );
-		$this->group_name = __( 'Messaging', 'autonami-automations-connectors' );
+		$this->nice_name  = __( 'PushEngage', 'wp-marketing-automations-connectors' );
+		$this->group_name = __( 'Messaging', 'wp-marketing-automations-connectors' );
 		$this->group_slug = 'messaging';
 		$this->priority   = 55;
 
