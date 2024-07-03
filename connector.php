@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Connector class
  *
@@ -32,8 +33,8 @@ class BWFCO_PushEngage extends BWF_CO {
 	/**
 	 * Class Constructor.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function __construct() {
 		$this->keys_to_track = array(
@@ -57,8 +58,8 @@ class BWFCO_PushEngage extends BWF_CO {
 	/**
 	 * Get fields schema for connector settings.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function get_fields_schema() {
 		return array(
@@ -77,8 +78,8 @@ class BWFCO_PushEngage extends BWF_CO {
 	/**
 	 * Get Settings field values.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function get_settings_fields_values() {
 		$pushengage_settings = get_option( 'pushengage_settings', array() );
@@ -132,14 +133,16 @@ class BWFCO_PushEngage extends BWF_CO {
 		$pe_res = $call_class->process();
 
 		if ( is_array( $pe_res ) && 200 === $pe_res['response'] && ! isset( $pe_res['body']['error'] ) ) {
-			$response                             = array();
-			$response['status']                   = 'success';
-			$response['api_data']['api_token']    = $posted_data['api_token'];
+			$response                          = array();
+			$response['status']                = 'success';
+			$response['api_data']['api_token'] = $posted_data['api_token'];
 
 			if ( isset( $pe_res['body']['data']['site'] ) ) {
 				$response['api_data']['site_id']  = $pe_res['body']['data']['site']['site_id'];
 				$response['api_data']['site_key'] = $pe_res['body']['data']['site']['site_key'];
 			}
+			WFCO_PushEngage_Common::create_field_if_not_exists( 'PushEngage Message Pe Token' );
+			WFCO_PushEngage_Common::create_field_if_not_exists( 'PushEngage Subscriber IDs' );
 
 			return $response;
 		} elseif ( isset( $pe_res['body']['error'] ) ) {
@@ -167,8 +170,8 @@ class BWFCO_PushEngage extends BWF_CO {
 	/**
 	 * Get Instance
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_instance() {
 		if ( null === self::$ins ) {
@@ -182,8 +185,9 @@ class BWFCO_PushEngage extends BWF_CO {
 	 * Get API request headers.
 	 *
 	 * @param string $api_token
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function set_headers( $api_token ) {
 		$headers = array(
@@ -200,8 +204,8 @@ class BWFCO_PushEngage extends BWF_CO {
 	/**
 	 * get request headers.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_headers() {
 		return self::$headers;
@@ -211,8 +215,9 @@ class BWFCO_PushEngage extends BWF_CO {
 	 * Add Connector card.
 	 *
 	 * @param array $available_connectors
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function add_card( $available_connectors ) {
 		$available_connectors['autonami']['connectors']['bwfco_pushengage'] = array(

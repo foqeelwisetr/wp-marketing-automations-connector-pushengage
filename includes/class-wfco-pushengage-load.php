@@ -23,11 +23,12 @@ if ( ! class_exists( 'WFCO_PushEngage_Load' ) ) {
 		 * @var string
 		 */
 		public $assets_dir = WFCO_PUSHENGAGE_PLUGIN_URL . '/assets/dist';
+
 		/**
 		 * Class Constructor.
 		 *
-		 * @since X.X.X
 		 * @return void
+		 * @since X.X.X
 		 */
 		public function __construct() {
 			add_action( 'bwfan_after_app_script_loaded', array( $this, 'bwfan_load_pushengage_addon_script' ) );
@@ -36,8 +37,8 @@ if ( ! class_exists( 'WFCO_PushEngage_Load' ) ) {
 		/**
 		 * Load PushEngage Addon Script.
 		 *
-		 * @since X.X.X
 		 * @return void
+		 * @since X.X.X
 		 */
 		public function bwfan_load_pushengage_addon_script() {
 			if ( is_dir( $this->build_dir ) ) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PushEngage Integration class.
  *
@@ -22,8 +23,8 @@ final class BWFAN_PushEngage_Integration extends BWFAN_Integration {
 	/**
 	 * Get Instance.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_instance() {
 		if ( null === self::$ins ) {
@@ -37,8 +38,9 @@ final class BWFAN_PushEngage_Integration extends BWFAN_Integration {
 	 * After Registration.
 	 *
 	 * @param BWFAN_Action $action_object
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
 	protected function do_after_action_registration( BWFAN_Action $action_object ) {
 		$action_object->connector = $this->connector_slug;
@@ -65,13 +67,15 @@ final class BWFAN_PushEngage_Integration extends BWFAN_Integration {
 	/**
 	 * Send SMS / Notification.
 	 *
-		//!! Need to check with FunnelKit team about this //
-		//TODO: Verify if this is needed.
+	 * //!! Need to check with FunnelKit team about this //
+	 * //TODO: Verify if this is needed.
 	 * @param [type] $args
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
-	public function send_message( $args ) {}
+	public function send_message( $args ) {
+	}
 }
 
 /**

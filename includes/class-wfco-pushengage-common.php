@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Common methods.
  *
@@ -11,8 +12,8 @@ class WFCO_PushEngage_Common {
 	/**
 	 * get instance.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
@@ -29,6 +30,7 @@ class WFCO_PushEngage_Common {
 	 */
 	public static function get_api_token() {
 		$data = self::get_pushengage_connector_settings();
+
 		return isset( $data['api_token'] ) && ! empty( $data['api_token'] ) ? $data['api_token'] : '';
 	}
 
@@ -52,8 +54,8 @@ class WFCO_PushEngage_Common {
 	/**
 	 * Get Connector Slug.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_connector_slug() {
 		return sanitize_title( BWFCO_PushEngage::class );
@@ -63,8 +65,9 @@ class WFCO_PushEngage_Common {
 	 * Update settings.
 	 *
 	 * @param array $settings
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function update_settings( $settings = array() ) {
 		if ( empty( $settings ) ) {
@@ -87,15 +90,16 @@ class WFCO_PushEngage_Common {
 	 *
 	 * @param string $str
 	 * @param int $max_length
-	 * @since X.X.X
+	 *
 	 * @return string
+	 * @since X.X.X
 	 */
 	public static function truncate_str( $str, $max_length ) {
 		if ( strlen( $str ) <= $max_length ) {
 			return $str;
 		}
 
-		$truncated_str = substr( $str, 0, $max_length );
+		$truncated_str  = substr( $str, 0, $max_length );
 		$last_space_pos = strrpos( $truncated_str, ' ' );
 
 		if ( false !== $last_space_pos ) {
@@ -104,12 +108,13 @@ class WFCO_PushEngage_Common {
 
 		return $truncated_str;
 	}
-	public static function create_field_if_not_exists($field_name) {
+
+	public static function create_field_if_not_exists( $field_name ) {
 		$field = BWFCRM_Fields::get_fieldby_name( $field_name );
 		if ( ! empty( $field ) ) {
 			return;
 		}
-		BWFCRM_Fields::add_field($field_name, 'text', array(), '', 2, 2, 1, 0, 2);
+		BWFCRM_Fields::add_field( $field_name, 'text', array(), '', 2, 2, 1, 0, 2 );
 	}
 }
 

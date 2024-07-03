@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Send Notification action call.
  *
@@ -25,8 +26,8 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 	/**
 	 * Constructor.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function __construct() {
 		$this->required_fields = array( 'api_token' );
@@ -35,8 +36,8 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 	/**
 	 * get instance.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_instance() {
 		if ( null === self::$ins ) {
@@ -65,6 +66,10 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 		$contact = new WooFunnels_Contact( '', '', '', $contact_id, '' );
 
 		//get subscriber IDs from FunnelKit Contact.
+		$field = BWFCRM_Fields::get_fieldby_name( 'PushEngage Subscriber IDs' );
+		if ( empty( $field ) ) {
+			WFCO_PushEngage_Common::create_field_if_not_exists( 'PushEngage Subscriber IDs' );
+		}
 		$subscriber_ids = $contact->get_field_by_slug( 'pushengage-subscriber-ids' ) ? strtotime( $contact->get_field_by_slug( 'pushengage-subscriber-ids' ) ) : '';
 
 		if ( empty( $subscriber_ids ) || ! is_array( $subscriber_ids ) ) {
@@ -146,6 +151,7 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 
 		// Make request.
 		$res = $this->make_wp_requests( $this->api_end_point, $body, BWFCO_PushEngage::get_headers(), BWF_CO::$POST );
+
 		return $res;
 	}
 
@@ -155,13 +161,14 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 	 * @param array $params
 	 * @param string $button_type
 	 * @param int $index
+	 *
 	 * @return void
 	 */
 	private function add_button( &$params, $button_type, $index ) {
 		$button = array(
-			'label'     => $this->data[ "{$button_type}_button_title" ] ?? '',
-			'url'       => $this->data[ "{$button_type}_button_url" ] ?? '',
-			'image_url' => $this->data[ "{$button_type}_button_image" ] ?? '',
+			'label'     => $this->data["{$button_type}_button_title"] ?? '',
+			'url'       => $this->data["{$button_type}_button_url"] ?? '',
+			'image_url' => $this->data["{$button_type}_button_image"] ?? '',
 		);
 
 		// Remove empty keys.

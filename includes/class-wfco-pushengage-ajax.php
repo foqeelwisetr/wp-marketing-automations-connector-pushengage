@@ -30,8 +30,8 @@ class WFCO_PushEngage_AJAX {
 
 		if ( ! class_exists( 'WooFunnels_Contact' ) ) {
 			wp_send_json_error( array(
-					'message' => __( 'FunnelKit Automations not found', 'wp-marketing-automations-connectors' ),
-				) );
+				'message' => __( 'FunnelKit Automations not found', 'wp-marketing-automations-connectors' ),
+			) );
 		}
 
 		$contact_uid      = sanitize_text_field( filter_input( INPUT_POST, 'contactID' ) );
@@ -41,8 +41,12 @@ class WFCO_PushEngage_AJAX {
 
 		if ( empty( $contact->id ) ) {
 			wp_send_json_error( array(
-					'message' => __( 'Invalid contact ID provided', 'wp-marketing-automations-connectors' ),
-				) );
+				'message' => __( 'Invalid contact ID provided', 'wp-marketing-automations-connectors' ),
+			) );
+		}
+		$field = BWFCRM_Fields::get_fieldby_name( 'PushEngage Message Pe Token' );
+		if ( empty( $field ) ) {
+			WFCO_PushEngage_Common::create_field_if_not_exists( 'PushEngage Message Pe Token' );
 		}
 
 		$subs_tokens = $contact->get_field_by_slug( 'pushengage-message-pe-token' ) ? strtotime( $contact->get_field_by_slug( 'pushengage-message-pe-token' ) ) : '';
@@ -60,9 +64,9 @@ class WFCO_PushEngage_AJAX {
 		$contact->save_meta();
 
 		wp_send_json_success( array(
-				'message'           => __( 'Subscriber ID synced', 'wp-marketing-automations-connectors' ),
-				'subscriber_tokens' => $contact->get_field_by_slug( 'pushengage-message-pe-token' ),
-			) );
+			'message'           => __( 'Subscriber ID synced', 'wp-marketing-automations-connectors' ),
+			'subscriber_tokens' => $contact->get_field_by_slug( 'pushengage-message-pe-token' ),
+		) );
 	}
 }
 

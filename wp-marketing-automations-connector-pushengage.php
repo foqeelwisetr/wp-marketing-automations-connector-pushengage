@@ -33,8 +33,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Class Constructor.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	private function __construct() {
 		/**
@@ -51,8 +51,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Define Constants.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function define_plugin_properties() {
 		define( 'WFCO_PUSHENGAGE_VERSION', '1.0.0' );
@@ -68,8 +68,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Load Common Hooks.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function load_commons() {
 		$this->load_hooks();
@@ -78,8 +78,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Load hooks.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function load_hooks() {
 		add_action( 'wfco_load_connectors', array( $this, 'load_connector_classes' ) );
@@ -91,8 +91,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Get instance.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public static function get_instance() {
 		if ( null === self::$_instance ) {
@@ -105,8 +105,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Init PushEngage.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function init_pushengage() {
 		require WFCO_PUSHENGAGE_PLUGIN_DIR . '/includes/class-wfco-pushengage-common.php';
@@ -118,8 +118,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Load PushEngage after plugin loaded.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function bwfan_after_plugin_loaded() {
 		include WFCO_PUSHENGAGE_PLUGIN_DIR . '/includes/class-wfco-pushengage-load.php';
@@ -130,8 +130,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Load connector class
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function load_connector_classes() {
 		require_once WFCO_PUSHENGAGE_PLUGIN_DIR . '/includes/class-wfco-pushengage-common.php';
@@ -144,8 +144,8 @@ final class WFCO_PushEngage {
 	/**
 	 * Load Autonami integration classes.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function load_autonami_classes() {
 		$integration_dir = WFCO_PUSHENGAGE_PLUGIN_DIR . '/autonami';
@@ -160,8 +160,8 @@ if ( ! function_exists( 'WFCO_PushEngage_Core' ) ) {
 	/**
 	 * Global Common function to load all the classes
 	 *
-	 * @since X.X.X
 	 * @return WFCO_PushEngage
+	 * @since X.X.X
 	 */
 	function WFCO_PushEngage_Core() {//@codingStandardsIgnoreLine
 		return WFCO_PushEngage::get_instance();

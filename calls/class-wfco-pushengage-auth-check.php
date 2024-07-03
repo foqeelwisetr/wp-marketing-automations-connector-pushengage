@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Auth Check for Connection.
  *
@@ -24,8 +25,8 @@ class WFCO_PushEngage_Auth_Check extends WFCO_Call {
 	/**
 	 * Constructor.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function __construct() {
 		$this->required_fields = array( 'api_token' );
@@ -34,8 +35,8 @@ class WFCO_PushEngage_Auth_Check extends WFCO_Call {
 	/**
 	 * Get Instance
 	 *
-	 * @since X.X.X
 	 * @return WFCO_PushEngage_Auth_Check|null
+	 * @since X.X.X
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
