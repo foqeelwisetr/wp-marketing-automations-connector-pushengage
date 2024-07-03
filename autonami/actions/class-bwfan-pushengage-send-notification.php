@@ -144,13 +144,14 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	 */
 	public function handle_response_v2( $response ) {
 		do_action( 'bwfan_sendsms_action_response', $response, $this->data );
-		$message = '';
+		$message = __( 'Unknown Some Error', 'wp-marketing-automations-connectors' );
 		if ( is_array( $response ) && ( ( 200 === absint( $response['response'] ) ) && ( isset( $response['body']['status'] ) && 200 === absint( $response['body']['status'] ) ) ) ) {
 			$this->progress = false;
 
 			return $this->success_message( __( 'Notification sent successfully.', 'wp-marketing-automations-connectors' ) );
 		}
 		$this->progress = false;
+		$message        = isset( $response['message'] ) ? $response['message'] : $message;
 
 		return $this->skipped_response( $message );
 	}

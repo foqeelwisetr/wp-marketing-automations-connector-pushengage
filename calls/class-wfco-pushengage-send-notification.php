@@ -67,8 +67,9 @@ class WFCO_PushEngage_Send_Notification extends WFCO_Call {
 		//get subscriber IDs from FunnelKit Contact.
 		$subscriber_ids = $contact->get_meta( 'pushengage_subscriber_ids' );
 
+		$res      = array();
 		if ( empty( $subscriber_ids ) || ! is_array( $subscriber_ids ) ) {
-			return;
+			return $res[] = array( 'message' => 'Subscriber Id is missing' );
 		}
 
 		// Creating the API endpoint.
