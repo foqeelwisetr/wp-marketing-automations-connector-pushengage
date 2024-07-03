@@ -114,7 +114,7 @@ class WFCO_PushEngage_Common {
 		if ( ! empty( $field ) ) {
 			return;
 		}
-		BWFCRM_Fields::add_field( $field_name, 'text', array(), '', 2, 2, 1, 0, 2 );
+		BWFCRM_Fields::add_field( $field_name, '1', array(), '', 2, 2, 1, 0, 2 );
 	}
 }
 
