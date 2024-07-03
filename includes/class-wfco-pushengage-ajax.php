@@ -30,7 +30,7 @@ class WFCO_PushEngage_AJAX {
 		if ( ! class_exists( 'WooFunnels_Contact' ) ) {
 			wp_send_json_error(
 				array(
-					'message' => __( 'FunnelKit Automations not found', 'autonami-automations-connectors' ),
+					'message' => __( 'FunnelKit Automations not found', 'wp-marketing-automations-connectors' ),
 				)
 			);
 		}
@@ -43,7 +43,7 @@ class WFCO_PushEngage_AJAX {
 		if ( empty( $contact->id ) ) {
 			wp_send_json_error(
 				array(
-					'message' => __( 'Invalid contact ID provided', 'autonami-automations-connectors' ),
+					'message' => __( 'Invalid contact ID provided', 'wp-marketing-automations-connectors' ),
 				)
 			);
 		}
@@ -67,7 +67,7 @@ class WFCO_PushEngage_AJAX {
 
 		wp_send_json_success(
 			array(
-				'message'           => __( 'Subscriber ID synced', 'autonami-automations-connectors' ),
+				'message'           => __( 'Subscriber ID synced', 'wp-marketing-automations-connectors' ),
 				'subscriber_tokens' => $contact->get_meta( 'pushengage_subscriber_ids' ),
 			)
 		);

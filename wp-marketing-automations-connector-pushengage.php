@@ -9,7 +9,7 @@
  * Author URI: https://buildwoofunnels.com
  * License: GPLv3 or later
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: autonami-automations-connectors
+ * Text Domain: wp-marketing-automations-connectors
  *
  * Requires at least: 4.9
  * Tested up to: 6.3
@@ -61,7 +61,7 @@ final class WFCO_PushEngage {
 		define( 'WFCO_PUSHENGAGE_PLUGIN_DIR', __DIR__ );
 		define( 'WFCO_PUSHENGAGE_PLUGIN_URL', untrailingslashit( plugin_dir_url( WFCO_PUSHENGAGE_PLUGIN_FILE ) ) );
 		define( 'WFCO_PUSHENGAGE_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-		define( 'WFCO_PUSHENGAGE_MAIN', 'autonami-automations-connectors' );
+		define( 'WFCO_PUSHENGAGE_MAIN', 'wp-marketing-automations-connectors' );
 		define( 'WFCO_PUSHENGAGE_ENCODE', sha1( WFCO_PUSHENGAGE_PLUGIN_BASENAME ) );
 	}
 

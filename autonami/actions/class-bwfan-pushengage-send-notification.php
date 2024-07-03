@@ -6,8 +6,8 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	public $support_language = true;
 
 	public function __construct() {
-		$this->action_name = __( 'Send Notification', 'autonami-automations-connectors' );
-		$this->action_desc = __( 'This action sends a message via PushEngage', 'autonami-automations-connectors' );
+		$this->action_name = __( 'Send Notification', 'wp-marketing-automations-connectors' );
+		$this->action_desc = __( 'This action sends a message via PushEngage', 'wp-marketing-automations-connectors' );
 		$this->support_v2  = true;
 		$this->support_v1  = false;
 	}
@@ -148,7 +148,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 		if ( is_array( $response ) && ( ( 200 === absint( $response['response'] ) ) && ( isset( $response['body']['status'] ) && 200 === absint( $response['body']['status'] ) ) ) ) {
 			$this->progress = false;
 
-			return $this->success_message( __( 'Notification sent successfully.', 'autonami-automations-connectors' ) );
+			return $this->success_message( __( 'Notification sent successfully.', 'wp-marketing-automations-connectors' ) );
 		}
 		$this->progress = false;
 
@@ -189,57 +189,57 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 		return array(
 			array(
 				'id'          => 'notification_title',
-				'label'       => __( 'Notification Title', 'autonami-automations-connectors' ),
+				'label'       => __( 'Notification Title', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
-				'tip'         => __( 'Enter the title for your notification. You can use smart tags in the text field.', 'autonami-automations-connectors' ),
+				'tip'         => __( 'Enter the title for your notification. You can use smart tags in the text field.', 'wp-marketing-automations-connectors' ),
 				'description' => '',
 				'required'    => true,
 			),
 			array(
 				'id'          => 'notification_message',
-				'label'       => __( 'Notification Message', 'autonami-automations-connectors' ),
+				'label'       => __( 'Notification Message', 'wp-marketing-automations-connectors' ),
 				'type'        => 'textarea',
 				'class'       => 'bwfan-input-wrapper',
-				'tip'         => __( 'Enter the message for your notification content. You can use smart tags in the text field.', 'autonami-automations-connectors' ),
+				'tip'         => __( 'Enter the message for your notification content. You can use smart tags in the text field.', 'wp-marketing-automations-connectors' ),
 				'description' => '',
 				'required'    => true,
 			),
 			array(
 				'id'          => 'notification_url',
-				'label'       => __( 'Notification URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'Notification URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
-				'tip'         => __( 'Enter notification link URL.', 'autonami-automations-connectors' ),
+				'tip'         => __( 'Enter notification link URL.', 'wp-marketing-automations-connectors' ),
 				'description' => '',
 				'required'    => true,
 			),
 			array(
 				'id'          => 'notification_image',
-				'label'       => __( 'Notification Image URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'Notification Image URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
-				'placeholder' => __( 'Enter notification image URL', 'autonami-automations-connectors' ),
+				'placeholder' => __( 'Enter notification image URL', 'wp-marketing-automations-connectors' ),
 				'class'       => 'bwfan-input-wrapper',
-				'tip'         => __( 'Enter notification image URL or smart tag.', 'autonami-automations-connectors' ),
+				'tip'         => __( 'Enter notification image URL or smart tag.', 'wp-marketing-automations-connectors' ),
 				'description' => '',
 				'required'    => false,
 			),
 			array(
 				'id'            => 'enable_large_image',
-				'checkboxlabel' => __( 'Show Large Image', 'autonami-automations-connectors' ),
+				'checkboxlabel' => __( 'Show Large Image', 'wp-marketing-automations-connectors' ),
 				'type'          => 'checkbox',
 				'class'         => '',
-				'hint'          => __( 'Make your notifications stand out with larger images.', 'autonami-automations-connectors' ),
+				'hint'          => __( 'Make your notifications stand out with larger images.', 'wp-marketing-automations-connectors' ),
 				'description'   => '',
 				'required'      => false,
 			),
 			array(
 				'id'          => 'large_image_url',
-				'label'       => __( 'Notification Large Image URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'Notification Large Image URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
-				'placeholder' => __( 'Enter notification large image URL', 'autonami-automations-connectors' ),
+				'placeholder' => __( 'Enter notification large image URL', 'wp-marketing-automations-connectors' ),
 				'class'       => 'bwfan-input-wrapper',
-				'tip'         => __( 'Enter notification large image URL or smart tag.', 'autonami-automations-connectors' ),
+				'tip'         => __( 'Enter notification large image URL or smart tag.', 'wp-marketing-automations-connectors' ),
 				'toggler'     => array(
 					'fields'   => array(
 						array(
@@ -257,17 +257,17 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 				'checkboxlabel' => __(
 					'Multi Action Notification
 				',
-					'autonami-automations-connectors'
+					'wp-marketing-automations-connectors'
 				),
 				'type'          => 'checkbox',
 				'class'         => '',
-				'hint'          => __( 'Get more clicks with multiple call-to-action buttons.', 'autonami-automations-connectors' ),
+				'hint'          => __( 'Get more clicks with multiple call-to-action buttons.', 'wp-marketing-automations-connectors' ),
 				'description'   => '',
 				'required'      => false,
 			),
 			array(
 				'id'          => 'first_button_title',
-				'label'       => __( 'First Button Title', 'autonami-automations-connectors' ),
+				'label'       => __( 'First Button Title', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'tip'         => '',
@@ -285,7 +285,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'first_button_url',
-				'label'       => __( 'First Button URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'First Button URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'tip'         => '',
@@ -303,7 +303,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'first_button_image',
-				'label'       => __( 'First Button Image URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'First Button Image URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'tip'         => '',
@@ -324,7 +324,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 				'checkboxlabel' => __(
 					'Show Second Button
 				',
-					'autonami-automations-connectors'
+					'wp-marketing-automations-connectors'
 				),
 				'type'          => 'checkbox',
 				'class'         => '',
@@ -342,7 +342,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'second_button_title',
-				'label'       => __( 'Second Button Title', 'autonami-automations-connectors' ),
+				'label'       => __( 'Second Button Title', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'tip'         => '',
@@ -364,7 +364,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'second_button_url',
-				'label'       => __( 'Second Button URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'Second Button URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'tip'         => '',
@@ -386,7 +386,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'second_button_image',
-				'label'       => __( 'Second Button Image URL', 'autonami-automations-connectors' ),
+				'label'       => __( 'Second Button Image URL', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'tip'         => '',
@@ -411,17 +411,17 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 				'checkboxlabel' => __(
 					'UTM Parameters
 				',
-					'autonami-automations-connectors'
+					'wp-marketing-automations-connectors'
 				),
 				'type'          => 'checkbox',
 				'class'         => '',
 				'description'   => '',
-				'hint'          => __( 'Improve your analytics with custom link attribution.', 'autonami-automations-connectors' ),
+				'hint'          => __( 'Improve your analytics with custom link attribution.', 'wp-marketing-automations-connectors' ),
 				'required'      => false,
 			),
 			array(
 				'id'          => 'utm_source',
-				'label'       => __( 'UTM Source', 'autonami-automations-connectors' ),
+				'label'       => __( 'UTM Source', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'value'       => 'pushengage',
 				'class'       => 'bwfan-input-wrapper',
@@ -439,7 +439,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'utm_medium',
-				'label'       => __( 'UTM Medium', 'autonami-automations-connectors' ),
+				'label'       => __( 'UTM Medium', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'value'       => 'pushnotification',
 				'class'       => 'bwfan-input-wrapper',
@@ -457,7 +457,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'utm_campaign',
-				'label'       => __( 'UTM Campaign', 'autonami-automations-connectors' ),
+				'label'       => __( 'UTM Campaign', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'value'       => 'pushengage',
 				'class'       => 'bwfan-input-wrapper',
@@ -475,7 +475,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'utm_term',
-				'label'       => __( 'UTM Term', 'autonami-automations-connectors' ),
+				'label'       => __( 'UTM Term', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'toggler'     => array(
@@ -492,7 +492,7 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'          => 'utm_content',
-				'label'       => __( 'UTM Content', 'autonami-automations-connectors' ),
+				'label'       => __( 'UTM Content', 'wp-marketing-automations-connectors' ),
 				'type'        => 'text',
 				'class'       => 'bwfan-input-wrapper',
 				'toggler'     => array(
