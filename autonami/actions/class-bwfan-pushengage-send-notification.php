@@ -1,4 +1,5 @@
 <?php
+
 #[AllowDynamicProperties]
 class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	private static $instance = null;
@@ -28,12 +29,13 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	 *
 	 * @param array $automation_data
 	 * @param array $step_data
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function make_v2_data( $automation_data, $step_data ) {
 		$data_to_set = array();
-		$keys = array(
+		$keys        = array(
 			'api_token',
 			'site_id',
 			'site_key',
@@ -64,11 +66,11 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 		foreach ( $keys as $key ) {
 			switch ( $key ) {
 				case 'notification_title':
-					$data_val = isset( $step_data[ $key ] ) && ! is_bool( $step_data[ $key ] ) ? BWFAN_Common::decode_merge_tags( $step_data[ $key ] ) : $step_data[ $key ];
+					$data_val            = isset( $step_data[ $key ] ) && ! is_bool( $step_data[ $key ] ) ? BWFAN_Common::decode_merge_tags( $step_data[ $key ] ) : $step_data[ $key ];
 					$data_to_set[ $key ] = WFCO_PushEngage_Common::truncate_str( $data_val, 85 );
 					break;
 				case 'notification_message':
-					$data_val = isset( $step_data[ $key ] ) && ! is_bool( $step_data[ $key ] ) ? BWFAN_Common::decode_merge_tags( $step_data[ $key ] ) : $step_data[ $key ];
+					$data_val            = isset( $step_data[ $key ] ) && ! is_bool( $step_data[ $key ] ) ? BWFAN_Common::decode_merge_tags( $step_data[ $key ] ) : $step_data[ $key ];
 					$data_to_set[ $key ] = WFCO_PushEngage_Common::truncate_str( $data_val, 135 );
 					break;
 				case 'notification_url':
@@ -96,26 +98,29 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	/**
 	 * Load Hooks.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
-	public function load_hooks() {}
+	public function load_hooks() {
+	}
 
 	/**
 	 * add action
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
-	private function add_action() {}
+	private function add_action() {
+	}
 
 	/**
 	 * Remove Action
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
-	private function remove_action() {}
+	private function remove_action() {
+	}
 
 	/**
 	 * Execute the current action.
@@ -127,8 +132,9 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	 */
 	public function execute_action( $action_data ) {
 		global $wpdb;
-		$status = '';
+		$status  = '';
 		$message = '';
+
 		return array(
 			'status'  => $status,
 			'message' => $message,
@@ -139,8 +145,9 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	 * Handle event call response.
 	 *
 	 * @param array $response
-	 * @since X.X.X
+	 *
 	 * @return void
+	 * @since X.X.X
 	 */
 	public function handle_response_v2( $response ) {
 		do_action( 'bwfan_sendsms_action_response', $response, $this->data );
@@ -159,18 +166,20 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 	/**
 	 * Callbacks before executing the task.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
-	public function before_executing_task() {}
+	public function before_executing_task() {
+	}
 
 	/**
 	 * Callbacks after executing the task.
 	 *
-	 * @since X.X.X
 	 * @return void
+	 * @since X.X.X
 	 */
-	public function after_executing_task() {}
+	public function after_executing_task() {
+	}
 
 	/**
 	 * while broadcasting, set progress true then revert it to false after broadcasting done.
@@ -255,11 +264,8 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'            => 'multiple_buttons_enable',
-				'checkboxlabel' => __(
-					'Multi Action Notification
-				',
-					'wp-marketing-automations-connectors'
-				),
+				'checkboxlabel' => __( 'Multi Action Notification
+				', 'wp-marketing-automations-connectors' ),
 				'type'          => 'checkbox',
 				'class'         => '',
 				'hint'          => __( 'Get more clicks with multiple call-to-action buttons.', 'wp-marketing-automations-connectors' ),
@@ -322,14 +328,11 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'            => 'second_button_enable',
-				'checkboxlabel' => __(
-					'Show Second Button
-				',
-					'wp-marketing-automations-connectors'
-				),
+				'checkboxlabel' => __( 'Show Second Button
+				', 'wp-marketing-automations-connectors' ),
 				'type'          => 'checkbox',
 				'class'         => '',
-				'toggler'     => array(
+				'toggler'       => array(
 					'fields'   => array(
 						array(
 							'id'    => 'multiple_buttons_enable',
@@ -409,11 +412,8 @@ class BWFAN_PushEngage_Send_Notification extends BWFAN_Action {
 			),
 			array(
 				'id'            => 'utm_params',
-				'checkboxlabel' => __(
-					'UTM Parameters
-				',
-					'wp-marketing-automations-connectors'
-				),
+				'checkboxlabel' => __( 'UTM Parameters
+				', 'wp-marketing-automations-connectors' ),
 				'type'          => 'checkbox',
 				'class'         => '',
 				'description'   => '',
